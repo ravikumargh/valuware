@@ -1,0 +1,184 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project Work</title>
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" type='text/css' />
+    <link href="~/css/mainstyle.css" rel="stylesheet" type='text/css' />
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script>
+        function submitform() {
+            $("#formSurveyItemMaster").submit();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="left">
+                <button id="menu" title="Menu"><i class="fa fa-bars fa-2x"></i></button>
+                <h1> <i class="fa fa-play"></i> </h1>
+            </div>
+            <div class="utils right"> <a href="#" class='alerts'> <i class="fa fa-plus"></i> </a> <i class="sep">&nbsp;</i><a href="#"> &nbsp;<i class="fa fa-ellipsis-v"></i></a> </div>
+        </header>
+        <!--//Header-->
+        <div class="content">
+            <aside>
+                <nav class='site-nav'>
+                    <a class="active" href="#"><i class="fa fa-home"></i> Home</a> <a href="#"><i class="fa fa-gears"></i> Services</a> <a href="#">
+                        <i class="fa fa-envelope"></i> Contact
+                    </a> <a href="#"><i class="fa fa-book"></i> Blog</a>
+                </nav>
+                <footer> <a href=""><i class="fa fa-sign-out fa-rotate-180"></i> Logout</a> </footer>
+            </aside>
+            <!--//sidebar-->
+            <section>
+                <div class="subheader_be">
+                    <div class="left">
+                        <ul class="page_top">
+                            <li class="pageH"> Editing @ViewBag.ReferenceNumber </li>
+                            @*<li class="inProcess">  in Process </li>*@
+                            @*<li class="Requested mobile_hide"> Requested 3 week ago, Last updated Monday </li>*@
+                        </ul>
+                    </div>
+                    <div class="right">
+                        @*<div class="export"> <a href="#"> Export</a> <i class="fa fa-angle-down"></i> </div>*@
+                        <div class="save_b"> <a href="#" onclick="submitform()"> Save</a> <i class="fa fa-angle-down"></i></div>
+                    </div>
+                </div>
+                <article>
+                    <div class="leftarea">
+                        <div class="left_txt">
+
+                            <div class="left_txtH"> Additional information </div>
+
+                            <span style="color:#82B9E0;">Show  images (4)</span>
+                            <br>
+                            <br>
+                            <br>
+                            <span style="color:#82B9E0;">Show  log (3)</span>
+                            <br>
+                            <br>
+                            <br>
+                            <span style="color:#82B9E0;">Show  comments (3)</span>
+                        </div>
+
+                        @*<div class="tab-nv mobile_hide">
+                                <ul>
+                                    <li> <a href="#"> Process Data </a> </li>
+                                    <li> <a href="#"> Process Data </a> </li>
+                                    <li class="tab-nv_sel"> <a href="#"> Process Data </a> </li>
+                                    <li> <a href="#"> Process Data </a> </li>
+                                </ul>
+                            </div>*@
+
+                    </div>
+                    <div class="rightarea">
+                        <div>
+                            @* partail view to edit survey item master *@
+                            @Html.Action("getSurveyItemMaster", new { id = ViewBag.ReferenceNumber })
+                        </div>
+                        <div>
+                            <h2> Survey Form</h2>
+                        </div>
+                        <div class="rightarea_main">
+                            @* This is the area for dynamic form generation *@
+
+                            <div style="position:relative; overflow:scroll;min-height:400px">
+
+                                <div>
+                                    @foreach (System.Data.DataRow element in Model.Rows)
+                                    {
+                                        switch (element["Form_Field_Type"].ToString())
+                                        {
+                                            case "LABEL":
+                                                <label style="position:absolute; left: @element["Left"]px; top: @element["Top"]px; width: @element["Width"]px; ">@element["Content"]</label>
+                                                break;
+                                            case "TEXTBOX":
+                                            <input type="text" name="@element["Data_Field_Name"]" id="@element["Data_Field_Name"]" value="@element["Content"]" style="position:absolute; left: @element["Left"]px; top: @element["Top"]px; width: @element["Width"]px;" />
+                                                break;
+                                            case "TEXTAREA":
+                                            <textarea name="@element["Data_Field_Name"]" id="@element["Data_Field_Name"]" style="position:absolute; left: @element["Left"]px; top: @element["Top"]px; width: @element["Width"]px;">@element["Content"]</textarea>
+                                                break;
+
+                                            case "CHECKBOX":
+                                            <input name="@element["Data_Field_Name"]" id="@element["Data_Field_Name"]" type="checkbox" value="@element["Content"]" style="position:absolute; left: @element["Left"]px; top: @element["Top"]px; width: @element["Width"]px;" />
+                                                break;
+                                            case "DROPDOWN":
+                                                string[] values = @element["Enumerations"].ToString().Split(',');
+                                                <select name="@element["Data_Field_Name"]" id="@element["Data_Field_Name"]" style="position:absolute; left: @element["Left"]px; top: @element["Top"]px; width: @element["Width"]px;">
+                                                    @foreach (string item in values)
+                                                    {
+                                                        if (item.ToString().Equals(element["Content"].ToString()))
+                                                        {
+                                                            <option value=@item.ToString() selected="selected">@item.ToString()</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value=@item.ToString()>@item.ToString()</option>
+                                                        }
+
+                                                    }
+                                                </select>
+                                                    break;
+                                            case "Multiselect":
+
+                                                    break;
+                                            case "Radiogroup":
+
+                                                    break;
+                                            case "Bookmark":
+
+                                                    break;
+                                            default:
+                                                    break;
+                                        }
+                                    }
+
+                                </div>
+
+
+                            </div>
+                            @* End of dynamic form generation *@
+                        </div>
+                        <div>
+                            @{
+                                var images = Directory.GetFiles(Server.MapPath("~/Images/SurveyForms/" + ViewBag.ReferenceNumber));
+                            }
+                            @foreach (var item in images)
+                            {
+                                string srcpath = "~/Images/SurveyForms/" + ViewBag.ReferenceNumber + "/" + Path.GetFileName(item);
+                                <img src="@Url.Content(srcpath)" style="width:200px; height:100px ;" />
+                            }
+                        </div>
+                    </div>
+
+
+                </article>
+            </section>
+            <div class="site-footer">
+                <div class="right"> <a href="">Terms of Use</a> <span class="sep"></span> <a href="" class='feedback'><i class="fa fa-bullhorn"></i> Feedback</a> </div>
+            </div>
+            <!--//body content-->
+        </div>
+        <!--//Main Content-->
+    </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script>
+        $(function () {
+            $("#menu").on("click", function () {
+                $(this).toggleClass("active");
+                $("body").toggleClass("nav-open");
+            });
+        });
+    </script>
+</body>
+</html>

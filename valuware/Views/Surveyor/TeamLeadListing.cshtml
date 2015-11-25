@@ -1,0 +1,197 @@
+﻿@model dynamic
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ticket List</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" type='text/css' />
+    <link href="~/css/mainstyle.css" rel="stylesheet" type='text/css' />
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--Header-->
+        <header>
+            <div class="left">
+                <button id="menu" title="Menu"><i class="fa fa-bars fa-2x"></i></button>
+                <h1> <i class="fa fa-play"></i> </h1>
+            </div>
+            <div class="utils right"> <a href="#" class='alerts'> <i class="fa fa-plus"></i> </a> <i class="sep">&nbsp;</i><a href="#"> &nbsp;<i class="fa fa-ellipsis-v"></i></a> </div>
+        </header>
+        <!--//Header-->
+        <!--menu Contents-->
+        <div style="display:none">
+            <input type="checkbox" id="togglebox" />
+            <nav id="offcanvas-menu"> Menu contents to be added </nav>
+            <div id="contentarea">
+                <label for="togglebox" id="navtoggler">Menu</label>
+            </div>
+        </div>
+        <!--menu Contents-->
+        <!--Left Dashboard-->
+        <div class="col-md-6 mob_col-md-12" id="LeftInfo">
+            <div class="left_bg">
+                <div class="left_border">
+                    <div class="bor_bot">
+                        <div class="hide"> Hide </div>
+                        
+                    </div>
+                    
+                    <div class="clear_line"> </div>
+                    <div> <canvas id="myChart" width="400" height="400"></canvas></div>
+                    <script>
+                        $(document).ready(function () {
+                            // var ctx1 = document.getElementById("myChart").getContext("2d");
+                            var ctx = $("#myChart").get(0).getContext("2d");
+                            var data = [
+                                {
+                                    value: 7,
+                                    color: "#F7464A",
+                                    highlight: "#FF5A5E",
+                                    label: "New"
+                                },
+                                {
+                                    value: 8,
+                                    color: "#46BFBD",
+                                    highlight: "#5AD3D1",
+                                    label: "Scheduled"
+                                },
+                                {
+                                    value: 3,
+                                    color: "#FDB45C",
+                                    highlight: "#FFC870",
+                                    label: "Submitted"
+                                }
+                            ]
+                            var piechart = new Chart(ctx).Pie(data);
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!--Left Dashboard-->
+        <!--Listing-->
+
+        <div class="col-md-6 mob_col-md-12" id="MainInfo">
+            <div class="filter_area">
+                <div class="">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="firstname" class="search" placeholder=" Search here" />
+                </div>
+                <div class=""> <span class="filter"> filter </span></div>
+            </div>
+
+
+            <div id="listItems">
+
+                <!--List Items-->
+                @foreach (var item in Model)
+                {
+                    <div class="content_div">
+                        <div class="col-md-3"> @item.Date_Created </div>
+                        <div class="col-md-6">
+                            <div class="content_text"> <a href="/Surveyor/TeamLeadEdit/@item.Reference_Number">@(item.Client_Code) - @(item.Department_Code) -  @(item.Survey_Type_Code)</a> </div>
+                            @if (Convert.ToInt32(item.Status) >= 5)
+                            {
+                                <div class="Townhouse"> Survey on @(item.Inspection_date) by @(item.UserName) </div>
+                            }
+                            else
+                            {
+                                <div class="Townhouse"> Survey within @(item.Due_Date) by @(item.UserName) </div>
+                            }
+
+                            <div class="LastUpdated"> Last Updated:  Monday </div>
+                        </div>
+                        <div class="col-md-3 rightPadding">
+                            <span class="view_btn right">
+                               
+                                    @if (item.Status == 1)
+                                    {
+                                        <span>New</span>
+                                    }
+                                   
+                                    @if (item.Status == 2)
+                                    {
+                                       <span>Scheduled</span>
+                                    }
+                                   
+                                    @if (item.Status == 3)
+                                    {
+                                        <span>Redo</span>
+                                    }
+                                   
+                                    @if (item.Status == 4)
+                                    {
+                                       <span>On Hold</span>
+                                    }
+                                   
+                                    @if (item.Status == 5)
+                                    {
+                                       <span>Submitted</span>
+                                    }
+                                   
+                                    @if (item.Status == 6)
+                                    {
+                                       <span>Cancelled</span>
+                                    }
+                                   
+                                    @if (item.Status == 7)
+                                    {
+                                        <span>Verified</span>
+                                    }
+                                   
+                                    @if (item.Status == 8)
+                                    {
+                                        <span>Closed</span>
+                                    }
+                                  
+                            </span>
+                            <div class="clear_line"> </div>
+                            <span class="lostlink"> Survey @(item.Service_Ticket_ID) - @(item.Reference_Number) </span>
+                            @*<span class="lostlink">  @item.Cust_Location </> </span>*@
+
+                        </div>
+                    </div>
+                }
+
+                <div class="content_div">
+                    <div class="col-md-3"> Date Created </div>
+                    <div class="col-md-6">
+                        <div class="content_text"> Hyperlink </div>
+                        <div class="Townhouse"> Town house </div>
+                        <div class="LastUpdated"> Last Updated:  Monday </div>
+                    </div>
+                    <div class="col-md-3 rightPadding">
+                        <span class="view_btn right"> <a href="#"> Status Drop down</a></span>
+                        <div class="clear_line"> </div>
+                        <span class="lostlink"> RE 1506 527032 </span>
+                    </div>
+                </div>
+
+                <!--List Items-->
+            </div>
+        </div>
+        <!--Listing-->
+    </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            $("#menu").on("click", function () {
+                $(this).toggleClass("active");
+                $("body").toggleClass("nav-open");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FormDesignModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client_Master">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Client_Code" Type="varchar" MaxLength="15" />
+          <Property Name="Contact_FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="Contact_LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Contact_Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="Client_Location" Type="varchar" MaxLength="50" />
+          <Property Name="Room_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="25" />
+          <Property Name="Alternate_Phone" Type="varchar" MaxLength="25" />
+          <Property Name="Landline_Number" Type="varchar" MaxLength="25" />
+          <Property Name="Fax" Type="varchar" MaxLength="25" />
+          <Property Name="Client_Type" Type="tinyint" />
+          <Property Name="Notes" Type="text" />
+          <Property Name="Comments" Type="text" />
+          <Property Name="Created_On" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_On" Type="datetime" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Department_ID" />
+          </Key>
+          <Property Name="Department_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Department_Code" Type="varchar" MaxLength="20" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Created_On" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_On" Type="datetime" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Form_Template_Design">
+          <Key>
+            <PropertyRef Name="Form_Field_ID" />
+          </Key>
+          <Property Name="Form_Field_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Form_Template_ID" Type="int" />
+          <Property Name="Form_Field_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Form_Field_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Data_Field_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Data_Field_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Field_Mandatory" Type="bit" />
+          <Property Name="Field_HistoryIdentifier" Type="bit" />
+          <Property Name="Content" Type="varchar" MaxLength="100" />
+          <Property Name="Width" Type="smallint" />
+          <Property Name="Height" Type="smallint" />
+          <Property Name="Left" Type="smallint" />
+          <Property Name="Top" Type="smallint" />
+          <Property Name="Font" Type="varchar" MaxLength="50" />
+          <Property Name="Font_Color" Type="varchar" MaxLength="50" />
+          <Property Name="Font_Size" Type="int" />
+          <Property Name="Font_Bold" Type="varchar" MaxLength="25" />
+          <Property Name="Background_Color" Type="varchar" MaxLength="50" />
+          <Property Name="Text_Placeholder" Type="varchar" MaxLength="100" />
+          <Property Name="rows" Type="smallint" />
+          <Property Name="Enumerations" Type="text" />
+          <Property Name="Select_Items" Type="text" />
+          <Property Name="Complex_Type_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Display_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Created_On" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_On" Type="datetime" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Form_Template_Master">
+          <Key>
+            <PropertyRef Name="Form_Template_ID" />
+          </Key>
+          <Property Name="Form_Template_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Form_Template_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Department_ID" Type="int" />
+          <Property Name="Survey_Type_ID" Type="int" />
+          <Property Name="Form_Entity" Type="varchar" MaxLength="50" />
+          <Property Name="Created_On" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_On" Type="datetime" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Survey_Types">
+          <Key>
+            <PropertyRef Name="Survey_Type_ID" />
+          </Key>
+          <Property Name="Survey_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Survey_Type_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Survey_Type_Code" Type="varchar" MaxLength="20" />
+          <Property Name="Created_On" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_On" Type="datetime" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityContainer Name="FormDesignModelStoreContainer">
+          <EntitySet Name="Client_Master" EntityType="Self.Client_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Form_Template_Design" EntityType="Self.Form_Template_Design" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Form_Template_Master" EntityType="Self.Form_Template_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Survey_Types" EntityType="Self.Survey_Types" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FormDesignModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client_Master">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Room_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Alternate_Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Landline_Number" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Type" Type="Byte" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Created_On" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_On" Type="DateTime" Precision="3" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Department_ID" />
+          </Key>
+          <Property Name="Department_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Created_On" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_On" Type="DateTime" Precision="3" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Form_Template_Design">
+          <Key>
+            <PropertyRef Name="Form_Field_ID" />
+          </Key>
+          <Property Name="Form_Field_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Form_Template_ID" Type="Int32" />
+          <Property Name="Form_Field_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Form_Field_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Field_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Field_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Field_Mandatory" Type="Boolean" />
+          <Property Name="Field_HistoryIdentifier" Type="Boolean" />
+          <Property Name="Content" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Width" Type="Int16" />
+          <Property Name="Height" Type="Int16" />
+          <Property Name="Left" Type="Int16" />
+          <Property Name="Top" Type="Int16" />
+          <Property Name="Font" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Font_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Font_Size" Type="Int32" />
+          <Property Name="Font_Bold" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Background_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Text_Placeholder" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rows" Type="Int16" />
+          <Property Name="Enumerations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Select_Items" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Complex_Type_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Display_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Created_On" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_On" Type="DateTime" Precision="3" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Form_Template_Master">
+          <Key>
+            <PropertyRef Name="Form_Template_ID" />
+          </Key>
+          <Property Name="Form_Template_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Form_Template_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Department_ID" Type="Int32" />
+          <Property Name="Survey_Type_ID" Type="Int32" />
+          <Property Name="Form_Entity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Created_On" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_On" Type="DateTime" Precision="3" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Survey_Types">
+          <Key>
+            <PropertyRef Name="Survey_Type_ID" />
+          </Key>
+          <Property Name="Survey_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Survey_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Survey_Type_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Created_On" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_On" Type="DateTime" Precision="3" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="formDesignEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client_Master" EntityType="Self.Client_Master" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Form_Template_Design" EntityType="Self.Form_Template_Design" />
+          <EntitySet Name="Form_Template_Master" EntityType="Self.Form_Template_Master" />
+          <EntitySet Name="Survey_Types" EntityType="Self.Survey_Types" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FormDesignModelStoreContainer" CdmEntityContainer="formDesignEntities">
+          <EntitySetMapping Name="Client_Master">
+            <EntityTypeMapping TypeName="FormDesignModel.Client_Master">
+              <MappingFragment StoreEntitySet="Client_Master">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Code" ColumnName="Client_Code" />
+                <ScalarProperty Name="Contact_FirstName" ColumnName="Contact_FirstName" />
+                <ScalarProperty Name="Contact_LastName" ColumnName="Contact_LastName" />
+                <ScalarProperty Name="Contact_Email" ColumnName="Contact_Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Client_Location" ColumnName="Client_Location" />
+                <ScalarProperty Name="Room_Number" ColumnName="Room_Number" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Alternate_Phone" ColumnName="Alternate_Phone" />
+                <ScalarProperty Name="Landline_Number" ColumnName="Landline_Number" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Client_Type" ColumnName="Client_Type" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="FormDesignModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+                <ScalarProperty Name="Department_Code" ColumnName="Department_Code" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Form_Template_Design">
+            <EntityTypeMapping TypeName="FormDesignModel.Form_Template_Design">
+              <MappingFragment StoreEntitySet="Form_Template_Design">
+                <ScalarProperty Name="Form_Field_ID" ColumnName="Form_Field_ID" />
+                <ScalarProperty Name="Form_Template_ID" ColumnName="Form_Template_ID" />
+                <ScalarProperty Name="Form_Field_Name" ColumnName="Form_Field_Name" />
+                <ScalarProperty Name="Form_Field_Type" ColumnName="Form_Field_Type" />
+                <ScalarProperty Name="Data_Field_Name" ColumnName="Data_Field_Name" />
+                <ScalarProperty Name="Data_Field_Type" ColumnName="Data_Field_Type" />
+                <ScalarProperty Name="Field_Mandatory" ColumnName="Field_Mandatory" />
+                <ScalarProperty Name="Field_HistoryIdentifier" ColumnName="Field_HistoryIdentifier" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Left" ColumnName="Left" />
+                <ScalarProperty Name="Top" ColumnName="Top" />
+                <ScalarProperty Name="Font" ColumnName="Font" />
+                <ScalarProperty Name="Font_Color" ColumnName="Font_Color" />
+                <ScalarProperty Name="Font_Size" ColumnName="Font_Size" />
+                <ScalarProperty Name="Font_Bold" ColumnName="Font_Bold" />
+                <ScalarProperty Name="Background_Color" ColumnName="Background_Color" />
+                <ScalarProperty Name="Text_Placeholder" ColumnName="Text_Placeholder" />
+                <ScalarProperty Name="rows" ColumnName="rows" />
+                <ScalarProperty Name="Enumerations" ColumnName="Enumerations" />
+                <ScalarProperty Name="Select_Items" ColumnName="Select_Items" />
+                <ScalarProperty Name="Complex_Type_Name" ColumnName="Complex_Type_Name" />
+                <ScalarProperty Name="Display_Name" ColumnName="Display_Name" />
+                <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Form_Template_Master">
+            <EntityTypeMapping TypeName="FormDesignModel.Form_Template_Master">
+              <MappingFragment StoreEntitySet="Form_Template_Master">
+                <ScalarProperty Name="Form_Template_ID" ColumnName="Form_Template_ID" />
+                <ScalarProperty Name="Form_Template_Name" ColumnName="Form_Template_Name" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+                <ScalarProperty Name="Survey_Type_ID" ColumnName="Survey_Type_ID" />
+                <ScalarProperty Name="Form_Entity" ColumnName="Form_Entity" />
+                <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Survey_Types">
+            <EntityTypeMapping TypeName="FormDesignModel.Survey_Types">
+              <MappingFragment StoreEntitySet="Survey_Types">
+                <ScalarProperty Name="Survey_Type_ID" ColumnName="Survey_Type_ID" />
+                <ScalarProperty Name="Survey_Type_Name" ColumnName="Survey_Type_Name" />
+                <ScalarProperty Name="Survey_Type_Code" ColumnName="Survey_Type_Code" />
+                <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

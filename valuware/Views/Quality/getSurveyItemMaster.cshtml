@@ -1,0 +1,125 @@
+﻿@model valuware.Models.getSurveyItemMasterInfo_Result
+@{
+    Layout = null;
+}
+<div>
+    @using (Html.BeginForm("saveSurveyItemMaster", "Quality", FormMethod.Post, new { id = "formSurveyItemMaster" }))
+    {
+        <br />
+        @Html.HiddenFor(x => x.Reference_Number);
+        <br />
+        <br />
+        @Html.HiddenFor(x => x.Service_Ticket_ID);
+        <br />
+        @Html.HiddenFor(x => x.Id);
+        <label> Client Name :</label>
+        @Html.DisplayFor(x => x.Client_Name) <br />
+        <label> Department Name :</label>
+        @Html.DisplayFor(x => x.Department_Name) <br />
+        <label>Survey Type :</label>
+        @Html.DisplayFor(x => x.Survey_Type_Name) <br />
+        <label>Inspection Date :</label>
+        @Html.EditorFor(x => x.Inspection_date) <br />
+        <label>Status : </label>
+        <select id="Status" name="Status">
+            @if (Model.Status == 1)
+            {
+                <option value="1" selected>New</option>
+            }
+            else
+            {
+                <option value="1">New</option>
+            }
+            @if (Model.Status == 2)
+            {
+                <option value="2" selected>Scheduled</option>
+            }
+            else
+            {
+                <option value="2">Scheduled</option>
+            }
+            @if (Model.Status == 3)
+            {
+                <option value="3" selected>Redo</option>
+            }
+            else
+            {
+                <option value="3">Redo</option>
+            }
+            @if (Model.Status == 4)
+            {
+                <option value="4" selected>On-Hold</option>
+            }
+            else
+            {
+                <option value="4">On-Hold</option>
+            }
+            @if (Model.Status == 5)
+            {
+                <option value="5" selected>Submitted</option>
+            }
+            else
+            {
+                <option value="5">Submitted</option>
+            }
+            @if (Model.Status == 6)
+            {
+                <option value="6" selected>Cancelled</option>
+            }
+            else
+            {
+                <option value="6">Cancelled</option>
+            }
+            @if (Model.Status == 7)
+            {
+                <option value="7" selected>Verified</option>
+            }
+            else
+            {
+                <option value="7">Verified</option>
+            }
+            @if (Model.Status == 8)
+            {
+                <option value="8" selected>Closed</option>
+            }
+            else
+            {
+                <option value="8">Closed</option>
+            }
+
+        </select>
+
+        <label>Commission : </label>
+        @Html.CheckBox("Commission", Model.Commission) <br />
+        <label> Survey Rating :</label>
+            // @Html.DropDownListFor(x => x.Survey_Rating,new SelectList(Enum.GetNames(typeof(ValuwareNextgen.Enumerations.Ratings)),Model.Survey_Rating))
+            <select id="Survey_Rating" name="Survey_Rating">
+                @if (Model.Survey_Rating == 1)
+                {
+                    <option value="1" selected="selected">Excellent</option>
+                }
+                else
+                {
+                    <option value="1">Excellent</option>
+                }
+
+                @if (Model.Survey_Rating == 2)
+                {
+                    <option value="2" selected="selected">Good</option>
+                }
+                else
+                {
+                    <option value="2">Good</option>
+                }
+                @if (Model.Survey_Rating == 3)
+                {
+                    <option value="3" selected="selected">Poor</option>
+                }
+                else
+                {
+                    <option value="3">Poor</option>
+                }
+            </select>    <br />
+    }
+
+</div>
