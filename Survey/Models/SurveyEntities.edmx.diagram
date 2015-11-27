@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8592ab4277a54af5ab6bc5d923491bc0" Name="Diagram1">
+        <EntityTypeShape EntityType="SurveyModel.Client" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.ClientType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.Department" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.Priority" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.Role" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.ServiceTicket" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.Status" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.StatusReason" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.SurveyType" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyModel.User" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_Priorities" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_StatusReasons" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_SurveyTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyModel.FK_ServiceTickets_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
