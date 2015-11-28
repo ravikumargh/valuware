@@ -1,24 +1,33 @@
-﻿using System;
+﻿using Survey.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Web.Models
+namespace Survey.Models
 {
      
-    public class RoleRepository : RepositoryBase<Role>, IRoleRepository
+    //public class RoleRepository : RepositoryBase<Role>, IRoleRepository
+    //{
+    //    public RoleRepository(IDbFactory dbFactory)
+    //        : base(dbFactory) { }
+    //}
+
+
+    public abstract class RepositoryBase 
     {
-        public RoleRepository(IDbFactory dbFactory)
-            : base(dbFactory) { }
+        #region Properties
+        private SurveyEntities dataContext;
+
+        protected SurveyEntities DbContext
+        {
+            get { return dataContext ?? (dataContext = new SurveyEntities()); }
+        }
+        #endregion
     }
-
-    public interface IRoleRepository : IRepository<Role>
-    {
-
-    }
-
+        /*
     public abstract class RepositoryBase<T> where T : class
     {
         #region Properties
@@ -67,7 +76,7 @@ namespace Web.Models
                 dbSet.Remove(obj);
         }
 
-        public virtual T GetById(int id)
+        public virtual T GetById(long id)
         {
             return dbSet.Find(id);
         }
@@ -90,7 +99,7 @@ namespace Web.Models
         #endregion
 
     }
-
+        */
     public interface IDbFactory : IDisposable
     {
         SurveyEntities Init();
@@ -102,10 +111,10 @@ namespace Web.Models
         // Marks an entity as modified
         void Update(T entity);
         // Marks an entity to be removed
-        void Delete(T entity);
+        void Delete(long id);
         void Delete(Expression<Func<T, bool>> where);
         // Get an entity by int id
-        T GetById(int id);
+        T GetById(long id);
         // Get an entity using delegate
         T Get(Expression<Func<T, bool>> where);
         // Gets all entities of type T

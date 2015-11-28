@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.Models
+namespace Survey.Models
 {
     using System;
     using System.Data.Entity;
@@ -18,6 +18,7 @@ namespace Web.Models
         public SurveyEntities()
             : base("name=SurveyEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,5 +37,6 @@ namespace Web.Models
         public virtual DbSet<SurveyType> SurveyTypes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
     }
 }

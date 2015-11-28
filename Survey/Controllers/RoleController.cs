@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Web.Models;
+using Survey.Models;
 
 namespace Survey.Controllers
 {
@@ -20,31 +20,33 @@ namespace Survey.Controllers
         // GET: api/Role
         public IEnumerable<Role> Get()
         {
-            //return new string[] { "value1", "value2" };
             return roleRepository.GetAll();
         }
 
         // GET: api/Role/5
-        public string Get(int id)
+        public Role Get(long id)
         {
-            return "value";
+            return roleRepository.GetById(id);
         }
 
         // POST: api/Role
         public void Post(Role role)
         {
-            //roleRepository.Add(role);
+            roleRepository.Add(role);
 
         }
 
         // PUT: api/Role/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, Role role)
         {
+            roleRepository.Update(role);
         }
 
         // DELETE: api/Role/5
-        public void Delete(int id)
+        public void Delete(long id)
         {
+            roleRepository.Delete(id);
+
         }
     }
 }

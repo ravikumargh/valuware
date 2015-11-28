@@ -60,13 +60,11 @@ namespace Survey.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -75,21 +73,85 @@ namespace Survey.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //var result = userRepository.Get(u => u.Email == model.Email && u.Password == model.Password);
+            var result = PasswordSignIn(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+                case SignInStatus.EmailNotConfirmed:
+                    return View("EmailNotConfirmed");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.RequiresTwoFactorAuthentication:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
-            }
+            } 
         }
+         
+        public SignInStatus PasswordSignIn(string userName, string password, bool isPersistent, bool shouldLockout)
+        {
+            IRepository<User> userRepository = new UserRepository();
+
+            User user = userRepository.Get(u => u.Email == userName);
+            if (user == null)
+            {
+                return SignInStatus.Failure;
+            }
+            if (!(user.EmailConfirmed))
+            {
+                return SignInStatus.EmailNotConfirmed;
+            }
+            if (user.IsLocked)
+            {
+                return SignInStatus.LockedOut;
+            }
+            if (user.Password == password)
+            {
+                //return await SignInOrTwoFactor(user, isPersistent);
+                var ident = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, userName), 
+                                                        new Claim(ClaimTypes.Role, user.RoleId.ToString()) 
+                                                      },
+                                               DefaultAuthenticationTypes.ApplicationCookie);
+
+                HttpContext.GetOwinContext().Authentication.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
+                System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier = System.Security.Claims.ClaimTypes.NameIdentifier;
+
+                //ClaimsIdentity oAuthIdentity = new ClaimsIdentity();
+                //ClaimsIdentity cookiesIdentity = new ClaimsIdentity();
+                //oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+
+                //oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, user.RoleId.ToString()));
+
+                //setAuthToken(userName, user.RoleId.ToString());
+
+                return SignInStatus.Success;
+            }
+            if (shouldLockout)
+            {
+                // If lockout is requested, increment access failed count which might lock out the user
+                //await UserManager.AccessFailedAsync(user.Id);
+                //if (await UserManager.IsLockedOutAsync(user.Id))
+                //{
+                //    return SignInStatus.LockedOut;
+                //}
+            }
+            return SignInStatus.Failure;
+        }
+         
+        public enum SignInStatus
+        {
+            Success,
+            EmailNotConfirmed,
+            LockedOut,
+            RequiresTwoFactorAuthentication,
+            Failure
+        }
+         
 
         //
         // GET: /Account/VerifyCode
@@ -104,35 +166,7 @@ namespace Survey.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
-        // POST: /Account/VerifyCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // The following code protects for brute force attacks against the two factor codes. 
-            // If a user enters incorrect codes for a specified amount of time then the user account 
-            // will be locked out for a specified amount of time. 
-            // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid code.");
-                    return View(model);
-            }
-        }
+        
 
         //
         // GET: /Account/Register
@@ -317,35 +351,7 @@ namespace Survey.Controllers
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        //
-        // GET: /Account/ExternalLoginCallback
-        [AllowAnonymous]
-        public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
-        {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-            if (loginInfo == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            // Sign in the user with this external login provider if the user already has a login
-            var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
-                case SignInStatus.Failure:
-                default:
-                    // If the user does not have an account, then prompt the user to create an account
-                    ViewBag.ReturnUrl = returnUrl;
-                    ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
-            }
-        }
+         
 
         //
         // POST: /Account/ExternalLoginConfirmation
@@ -388,7 +394,7 @@ namespace Survey.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

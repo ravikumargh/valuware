@@ -12,34 +12,23 @@ namespace Survey.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Team
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Team()
         {
-            this.ServiceTickets = new HashSet<ServiceTicket>();
+            this.Users = new HashSet<User>();
         }
     
         public long Id { get; set; }
-        public string Email { get; set; }
-        public bool EmailConfirmed { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool PhoneNumberConfirmed { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
-        public bool IsLocked { get; set; }
-        public int AccessFailedCount { get; set; }
-        public Nullable<long> RoleId { get; set; }
+        public Nullable<long> TeamLeadId { get; set; }
+        public Nullable<long> ManagerId { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<System.DateTime> DateUpdated { get; set; }
-        public Nullable<long> TeamId { get; set; }
     
-        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceTicket> ServiceTickets { get; set; }
-        public virtual Team Team { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

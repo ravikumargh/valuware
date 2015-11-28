@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using Web.Models;
+using Survey.Models;
 
 namespace Survey
 {
@@ -24,6 +24,13 @@ namespace Survey
             var container = new UnityContainer();
             //register the Address Repository
             container.RegisterType<IRepository<Role>, RoleRepository>();
+            container.RegisterType<IRepository<User>, UserRepository>();
+            container.RegisterType<IRepository<Team>, TeamRepository>();
+            container.RegisterType<IRepository<Department>, DepartmentRepository>();
+            container.RegisterType<IRepository<ClientType>, ClientTypeRepository>();
+            container.RegisterType<IRepository<Priority>, PriorityRepository>();
+            container.RegisterType<IRepository<Status>, StatusRepository>();
+            container.RegisterType<IRepository<StatusReason>, StatusReasonRepository>();
             //container.RegisterType<IRepository<Survey.Data.Entities.Department>, DepartmentRepository>();
             //container.RegisterType<IRepository<Survey.Data.Entities.Role>, RoleRepository>();
             //container.RegisterType<IRepository<User>, UserRepository>();

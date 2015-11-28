@@ -204,6 +204,12 @@
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\PriorityController.cs" />
+    <Compile Include="Controllers\StatusReasonController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,56 +217,67 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientType.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Priority.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Role.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PriorityRepository.cs" />
+    <Compile Include="Models\ClientTypeRepository.cs" />
+    <Compile Include="Models\DepartmentRepository.cs" />
+    <Compile Include="Models\StatusReasonRepository.cs" />
+    <Compile Include="Models\StatusRepository.cs" />
+    <Compile Include="Models\RoleRepository.cs" />
     <Compile Include="Models\ServiceTicket.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Status.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusReason.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyEntities.Context.cs">
-      <DependentUpon>SurveyEntities.Context.tt</DependentUpon>
+    <Compile Include="Models\SurveyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SurveyModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyEntities.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+    <Compile Include="Models\SurveyModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyEntities.Designer.cs">
-      <DependentUpon>SurveyEntities.edmx</DependentUpon>
+    <Compile Include="Models\SurveyModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SurveyModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SurveyType.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Team.cs">
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>SurveyEntities.tt</DependentUpon>
+      <DependentUpon>SurveyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TeamRepository.cs" />
+    <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -319,23 +336,6 @@
     <Content Include="Scripts\angular\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\SurveyEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SurveyEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SurveyEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SurveyEntities.edmx</DependentUpon>
-      <LastGenOutput>SurveyEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SurveyEntities.edmx.diagram">
-      <DependentUpon>SurveyEntities.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\SurveyEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SurveyEntities.edmx</DependentUpon>
-      <LastGenOutput>SurveyEntities.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\bootstrap\dist\css\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\dist\css\bootstrap.css.map" />
     <Content Include="Content\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
@@ -376,6 +376,23 @@
     <Content Include="Scripts\angular-ui-router\CONTRIBUTING.md" />
     <Content Include="Scripts\angular-ui-router\LICENSE" />
     <Content Include="Scripts\angular-ui-router\README.md" />
+    <EntityDeploy Include="Models\SurveyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SurveyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SurveyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SurveyModel.edmx</DependentUpon>
+      <LastGenOutput>SurveyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SurveyModel.edmx.diagram">
+      <DependentUpon>SurveyModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SurveyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SurveyModel.edmx</DependentUpon>
+      <LastGenOutput>SurveyModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -467,6 +484,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -477,6 +495,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

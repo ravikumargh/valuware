@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.Models
+namespace Survey.Models
 {
     using System;
     using System.Collections.Generic;
