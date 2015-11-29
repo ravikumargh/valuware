@@ -54,7 +54,7 @@ angular.module('AdminApp')
 
       $scope.getRoleDetails = function (rowObj) {
           return _.find($scope.roles, function(role) {
-              return role.Id ===rowObj.user.RoleId;
+              return role.Role_ID ===rowObj.user.RoleId;
           });
       };
       $scope.getTeamDetails = function (rowObj) {
@@ -149,8 +149,8 @@ angular.module('AdminApp')
           $scope.selectedUser = user;
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'DeleteConfirmationModalContent.html',
-              controller: 'DeleteConfirmationModalInstanceControl',
+              templateUrl: 'UserDeleteConfirmationModalContent.html',
+              controller: 'UserDeleteConfirmationModalInstanceControl',
               size: 'sm', 
               animation: true,
               resolve: {
@@ -185,7 +185,7 @@ angular.module('AdminApp').controller('UserModalInstanceCtrl', function ($scope,
     };
 });
 
-angular.module('AdminApp').controller('DeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
+angular.module('AdminApp').controller('UserDeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
 
     $scope.selectedUser = parentScope.selectedUser;
 

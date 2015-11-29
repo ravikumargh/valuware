@@ -1,0 +1,12 @@
+<div class="row" ng-init="init()">
+    <div class="col-sm-6 col-md-6 col-lg-6 left_bg">
+        <div ng-include="'views/survey/view/survey/survey-left-content.html'"></div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6" style="padding:0px">        
+        <div ui-view  class="survey-content">
+            <div ng-include="'views/survey/view/serviceticket/servicetickets.html'" ng-controller="ServiceTicketController"></div>
+        </div>
+    </div>
+</div>
+  
+ 

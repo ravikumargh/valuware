@@ -30,7 +30,7 @@ angular.module('AdminApp')
       };
 
       $scope.deleteClient = function (client) {
-          ClientService.deleteClient(client.Id).then(function (response) {
+          ClientService.deleteClient(client.Client_ID).then(function (response) {
               //_.remove($scope.clients, function (client) {
               //    return client.Id;
               //});
@@ -114,8 +114,8 @@ angular.module('AdminApp')
           $scope.selectedClient = client;
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'DeleteConfirmationModalContent.html',
-              controller: 'DeleteConfirmationModalInstanceControl',
+              templateUrl: 'ClientDeleteConfirmationModalContent.html',
+              controller: 'ClientDeleteConfirmationModalInstanceControl',
               size: 'sm', 
               resolve: {
                   parentScope: function () {
@@ -147,7 +147,7 @@ angular.module('AdminApp').controller('ClientModalInstanceCtrl', function ($scop
     };
 });
 
-angular.module('AdminApp').controller('DeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
+angular.module('AdminApp').controller('ClientDeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
 
     $scope.selectedClient = parentScope.selectedClient;
 

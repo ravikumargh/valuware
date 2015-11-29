@@ -24,7 +24,7 @@ namespace Survey.Controllers
 
         public ActionResult Index()
         {
-            SurveyEntities se = new SurveyEntities();
+            QualityEntities se = new QualityEntities();
             var role = se.Roles.ToList();
             return View();
         }

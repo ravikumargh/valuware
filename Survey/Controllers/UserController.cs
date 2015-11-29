@@ -37,7 +37,7 @@ namespace Survey.Controllers
         }
 
         // PUT: api/User/5
-        public void Put(int id, User user)
+        public void Put(User user)
         {
             userRepository.Update(user);
         }

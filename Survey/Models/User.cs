@@ -14,12 +14,6 @@ namespace Survey.Models
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.ServiceTickets = new HashSet<ServiceTicket>();
-        }
-    
         public long Id { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
@@ -32,14 +26,9 @@ namespace Survey.Models
         public bool IsLocked { get; set; }
         public int AccessFailedCount { get; set; }
         public Nullable<long> RoleId { get; set; }
+        public Nullable<long> TeamId { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<System.DateTime> DateUpdated { get; set; }
-        public Nullable<long> TeamId { get; set; }
-    
-        public virtual Role Role { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceTicket> ServiceTickets { get; set; }
-        public virtual Team Team { get; set; }
     }
 }

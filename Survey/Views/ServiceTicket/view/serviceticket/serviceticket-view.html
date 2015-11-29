@@ -1,0 +1,199 @@
+<div class="row" ng-init="init()">
+    <section>
+        <div class="subheader_be">
+            <div class="left">
+                <ul class="page_top">
+                    <li class="pageH"> Viewing RE 1506 527032 </li>
+                    <li class="inProcess">  in Process </li>
+                    <li class="Requested mobile_hide"> Requested 3 week ago, Last updated Monday </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="export"> <a href="#"> Export</a> <i class="fa fa-angle-down"></i> </div>
+                <div class="save_b"> <a href="#"> Approve</a> <i class="fa fa-angle-down"></i></div>
+            </div>
+        </div>
+        <article>
+            <div class="leftarea">
+                <div class="left_txt">
+                    <div class="left_txtH">  Property Owner </div>
+                    <span>  Ravikumar</span>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <span> Apartment </span> <br>
+                    <br>
+                    <span> Valued by Manju.M </span>
+                    <br>
+                    <br>
+                    <span>  Requested by Emirates NBD </span>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="left_txtH"> Additional information </div>
+                    <span style="color:#82B9E0;">Show  documents (6)</span>
+                    <br>
+                    <br>
+                    <br>
+                    <span style="color:#82B9E0;">Show  images (4)</span>
+                    <br>
+                    <br>
+                    <br>
+                    <span style="color:#82B9E0;">Show  log (3)</span>
+                    <br>
+                    <br>
+                    <br>
+                    <span style="color:#82B9E0;">Show  comments (3)</span>
+                </div>
+
+
+
+            </div>
+            <div class="rightarea">
+
+                <div class="rightarea_main row">
+                    <h1>Surveyed result</h1>
+                    <!--<form>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="ddlStatus">Status</label>
+                                <select ng-model="newserviceticket.StatusId" class="col-md-3 form-control" id="ddlStatus">
+                                    <option value="" ng-selected="selected">Select Status</option>
+                                    <option value="{{status.Id}}" ng-repeat="status in statuses">{{status.Name}}</option>
+                                </select>
+
+                                <label class="col-md-3 control-label" for="ddlClient">Client</label>
+                                <select ng-model="newserviceticket.ClientId" class="col-md-3 form-control" id="ddlClient">
+                                    <option value="" ng-selected="selected">Select Client</option>
+                                    <option value="{{client.Id}}" ng-repeat="client in clients">{{client.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="ddlDepartment ">Department </label>
+                                <select ng-model="newserviceticket.DepartmentId" class="col-md-3 form-control" id="ddlDepartment">
+                                    <option value="" ng-selected="selected">Select Department</option>
+                                    <option value="{{department.Id}}" ng-repeat="department in departments">{{department.Name}}</option>
+                                </select>
+
+                                <label class="col-md-3 control-label" for="ddlSurveyType">Survey Type</label>
+                                <select ng-model="newserviceticket.SurveyTypeId" class="col-md-3 form-control" id="ddlSurveyType">
+                                    <option value="" ng-selected="selected">Select Survey Type</option>
+                                    <option value="{{surveytype.Id}}" ng-repeat="surveytype in surveytypes">{{surveytype.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group  row">
+                            <label class="col-md-2 control-label" for="txtReferenceNo">Reference No</label>
+                            <input type="text" ng-model="newserviceticket.ReferenceNo" class="col-md-10 form-control" id="txtReferenceNo" placeholder="Reference number">
+                        </div>
+
+                        <div class="form-group  row">
+                            <label class="col-md-2 control-label" for="txtDescription">Description</label>
+                            <textarea id="txtDescription" ng-model="newserviceticket.Description" class="col-md-10 form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="ddlStatusReason">Status Reason</label>
+                                <select ng-model="newserviceticket.StatusReasonId" class="col-md-3 form-control" id="ddlStatusReason">
+                                    <option value="" ng-selected="selected">Select Status Reason</option>
+                                    <option value="{{statusreason.Id}}" ng-repeat="statusreason in statusreasons">{{statusreason.Name}}</option>
+                                </select>
+
+                                <label class="col-md-3 control-label" for="ddlPriority">Priority</label>
+                                <select ng-model="newserviceticket.PriorityId" class="col-md-3 form-control" id="ddlPriority">
+                                    <option value="" ng-selected="selected">Select Priority</option>
+                                    <option value="1">Standard</option>
+                                    <option value="2">High</option>
+                                    <option value="3">Urgent</option>
+                                    <option value="4">Critical</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="ddlDueDate">Due date</label>
+                                <div class="col-md-3" id="ddlDueDate">
+                                    <p class="input-group">
+                                        <input type="date" name="duedate" class="form-control" ng-model="newserviceticket.DueDate">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+
+                                <label class="col-md-3 control-label" for="ddlSurveyor">Surveyor</label>
+                                <select ng-model="newserviceticket.UserId" class="col-md-3 form-control" id="ddlSurveyor">
+                                    <option value="" ng-selected="selected">Select Surveyor</option>
+                                    <option value="{{user.Id}}" ng-repeat="user in users">{{user.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="ddlCustomerAvailable">Customer Availability</label>
+
+                            <div class="col-md-5" id="ddlCustomerAvailable">
+                                <p class="input-group">
+                                    <input type="date" name="CustomerAvailableFrom" class="form-control" ng-model="newserviceticket.CustomerAvailableFrom">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-5">
+                                <p class="input-group">
+                                    <input type="date" name="CustomerAvailableTo" class="form-control" ng-model="newserviceticket.CustomerAvailableTo">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group  row">
+                            <label class="col-md-2 control-label" for="txtName">Name</label>
+                            <input type="text" ng-model="newserviceticket.Name" class="col-md-10 form-control" id="txtName" placeholder="Name">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="txtCompanyName">Company Name</label>
+                            <input type="text" ng-model="newserviceticket.CompanyName" class="col-md-10 form-control" id="txtCompanyName" placeholder="Company Name">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="txtPhone">Phone number</label>
+                            <input type="text" ng-model="newserviceticket.Phone" class="col-md-10 form-control" id="txtPhone" placeholder="Phone number">
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="txtMobile">Mobile number</label>
+                            <input type="text" ng-model="newserviceticket.Mobile" class="col-md-10 form-control" id="txtMobile" placeholder="Mobile number">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="txtAddress1">Address 1</label>
+                            <textarea id="txtAddress1" ng-model="newserviceticket.Address1" class="col-md-10 form-control" rows="3" placeholder="Address 1"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="txtAddress2">Address 2</label>
+                            <textarea id="txtAddress2" ng-model="newserviceticket.Address2" class="col-md-10 form-control" rows="3" placeholder="Address 2"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default" ng-click="SaveServiceTicket()">Submit</button>
+                    </form>-->
+
+                </div>
+            </div>
+
+
+        </article>
+    </section>
+</div>
+

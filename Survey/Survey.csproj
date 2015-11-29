@@ -202,12 +202,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="Controllers\ClientTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\PriorityController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\SurveyTypeController.cs" />
+    <Compile Include="Controllers\ServiceTicketController.cs" />
     <Compile Include="Controllers\StatusReasonController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -216,65 +221,95 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Client.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+    <Compile Include="Models\ClientDevice.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientType.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client_Master.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommentsLog.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormGeneric.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Form_Template_Design.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Form_Template_Master.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Priority.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QualityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QualityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QualityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QualityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QualityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Report_Template_Design.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Report_Template_Master.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Role.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PriorityRepository.cs" />
     <Compile Include="Models\ClientTypeRepository.cs" />
     <Compile Include="Models\DepartmentRepository.cs" />
+    <Compile Include="Models\ClientRepository.cs" />
+    <Compile Include="Models\SurveyTypeRepository.cs" />
+    <Compile Include="Models\ServiceTicketRepository.cs" />
+    <Compile Include="Models\Service_Tickets.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StatusReasonRepository.cs" />
     <Compile Include="Models\StatusRepository.cs" />
     <Compile Include="Models\RoleRepository.cs" />
-    <Compile Include="Models\ServiceTicket.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Status.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusReason.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SurveyModel.Context.tt</DependentUpon>
+    <Compile Include="Models\SurveyLog.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+    <Compile Include="Models\Survey_Item_Master.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SurveyModel.edmx</DependentUpon>
+    <Compile Include="Models\Survey_Types.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyType.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+    <Compile Include="Models\SyncData.cs">
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>SurveyModel.tt</DependentUpon>
+      <DependentUpon>QualityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TeamRepository.cs" />
     <Compile Include="Models\UserRepository.cs" />
@@ -283,6 +318,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="App_Data\vnext.mdf" />
+    <Content Include="App_Data\vnext_log.ldf">
+      <DependentUpon>vnext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap\dist\css\bootstrap-theme.css" />
@@ -376,22 +415,22 @@
     <Content Include="Scripts\angular-ui-router\CONTRIBUTING.md" />
     <Content Include="Scripts\angular-ui-router\LICENSE" />
     <Content Include="Scripts\angular-ui-router\README.md" />
-    <EntityDeploy Include="Models\SurveyModel.edmx">
+    <EntityDeploy Include="Models\QualityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SurveyModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>QualityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\SurveyModel.Context.tt">
+    <Content Include="Models\QualityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SurveyModel.edmx</DependentUpon>
-      <LastGenOutput>SurveyModel.Context.cs</LastGenOutput>
+      <DependentUpon>QualityModel.edmx</DependentUpon>
+      <LastGenOutput>QualityModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\SurveyModel.edmx.diagram">
-      <DependentUpon>SurveyModel.edmx</DependentUpon>
+    <Content Include="Models\QualityModel.edmx.diagram">
+      <DependentUpon>QualityModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\SurveyModel.tt">
+    <Content Include="Models\QualityModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SurveyModel.edmx</DependentUpon>
-      <LastGenOutput>SurveyModel.cs</LastGenOutput>
+      <DependentUpon>QualityModel.edmx</DependentUpon>
+      <LastGenOutput>QualityModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -401,6 +440,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lodash\lodash.js" />
+    <Content Include="Scripts\lodash\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -448,6 +489,26 @@
     <Content Include="Views\Admin\view\user\user.controller.js" />
     <Content Include="Views\Admin\view\user\user.js" />
     <Content Include="Views\Admin\view\user\users.html" />
+    <Content Include="Views\ServiceTicket\app.js" />
+    <Content Include="Views\ServiceTicket\service\serviceticket.service.js" />
+    <Content Include="Views\ServiceTicket\view\serviceticket\serviceticket-new.html" />
+    <Content Include="Views\ServiceTicket\view\serviceticket\serviceticket-view.html" />
+    <Content Include="Views\ServiceTicket\view\serviceticket\serviceticket.controller.js" />
+    <Content Include="Views\ServiceTicket\view\serviceticket\serviceticket.js" />
+    <Content Include="Views\ServiceTicket\view\serviceticket\servicetickets.html" />
+    <Content Include="Views\Survey\app.js" />
+    <Content Include="Views\Survey\service\serviceticket.service.js" />
+    <Content Include="Views\Survey\view\serviceticket\serviceticket-new.html" />
+    <Content Include="Views\Survey\view\serviceticket\serviceticket-view.html" />
+    <Content Include="Views\Survey\view\serviceticket\serviceticket.controller.js" />
+    <Content Include="Views\Survey\view\serviceticket\serviceticket.js" />
+    <Content Include="Views\Survey\view\serviceticket\servicetickets.html" />
+    <Content Include="Views\Survey\view\survey\survey-left-content.html" />
+    <Content Include="Views\Survey\view\survey\survey-menu.html" />
+    <Content Include="Views\Survey\view\survey\survey.controller.js" />
+    <Content Include="Views\Survey\view\survey\survey.html" />
+    <Content Include="Views\Survey\view\survey\survey.js" />
+    <Content Include="Views\Survey\view\survey\surveymenu.controller.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -485,10 +546,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Scripts\lodash\.bower.json" />
+    <Content Include="Scripts\lodash\bower.json" />
+    <Content Include="Scripts\lodash\LICENSE" />
+    <Content Include="Views\ServiceTicket\Index.cshtml" />
+    <Content Include="Views\Survey\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

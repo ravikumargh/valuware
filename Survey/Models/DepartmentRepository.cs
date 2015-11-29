@@ -17,8 +17,8 @@ namespace Survey.Models
 
         public void Update(Department entity)
         {
-            Department department = GetById(entity.Id);
-            department.Name = entity.Name;
+            Department department = GetById(entity.Department_ID);
+            department.Department_Name = entity.Department_Name;
             DbContext.SaveChanges();
         }
 
@@ -38,7 +38,7 @@ namespace Survey.Models
 
         public Department GetById(long id)
         {
-            return DbContext.Departments.Where(w => w.Id == id).FirstOrDefault();
+            return DbContext.Departments.Where(w => w.Department_ID == id).FirstOrDefault();
 
         }
 

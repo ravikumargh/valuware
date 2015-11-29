@@ -28,8 +28,9 @@ namespace Survey
                      "~/Scripts/angular-route/angular-route.js",
                      "~/Scripts/angular-bootstrap/ui-bootstrap-tpls.js",
                      "~/Scripts/angular-ui-router/release/angular-ui-router.js",
-                     "~/Scripts/angular-local-storage/dist/angular-local-storage.js"
-                     ));
+                     "~/Scripts/angular-local-storage/dist/angular-local-storage.js",
+                     "~/Scripts/lodash/lodash.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

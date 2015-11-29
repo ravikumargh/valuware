@@ -29,7 +29,7 @@ angular.module('AdminApp')
       };
 
       $scope.deleteDepartment = function (department) {
-          DepartmentService.deleteDepartment(department.Id).then(function (response) {
+          DepartmentService.deleteDepartment(department.Department_ID).then(function (response) {
               //_.remove($scope.departments, function (department) {
               //    return department.Id;
               //});
@@ -73,8 +73,8 @@ angular.module('AdminApp')
 
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'myModalContent.html',
-              controller: 'ModalInstanceCtrl',
+              templateUrl: 'DepartmentModalContent.html',
+              controller: 'DepartmentModalInstanceCtrl',
               size: 'sm',
               animation: true,
               resolve: {
@@ -94,8 +94,8 @@ angular.module('AdminApp')
           $scope.selectedDepartment= $scope.newdepartment;
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'myModalContent.html',
-              controller: 'ModalInstanceCtrl',
+              templateUrl: 'DepartmentModalContent.html',
+              controller: 'DepartmentModalInstanceCtrl',
               size: 'sm',
               animation: true,
               resolve: {
@@ -115,8 +115,8 @@ angular.module('AdminApp')
           $scope.selectedDepartment = department;
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'DeleteConfirmationModalContent.html',
-              controller: 'DeleteConfirmationModalInstanceControl',
+              templateUrl: 'DepartmentDeleteConfirmationModalContent.html',
+              controller: 'DepartmentDeleteConfirmationModalInstanceControl',
               size: 'sm', 
               animation: true,
               resolve: {
@@ -135,7 +135,7 @@ angular.module('AdminApp')
   }]);
 
 
-angular.module('AdminApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, parentScope) {
+angular.module('AdminApp').controller('DepartmentModalInstanceCtrl', function ($scope, $uibModalInstance, parentScope) {
 
     $scope.selectedDepartment = parentScope.selectedDepartment;
     
@@ -148,7 +148,7 @@ angular.module('AdminApp').controller('ModalInstanceCtrl', function ($scope, $ui
     };
 });
 
-angular.module('AdminApp').controller('DeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
+angular.module('AdminApp').controller('DepartmentDeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
 
     $scope.selectedDepartment = parentScope.selectedDepartment;
 

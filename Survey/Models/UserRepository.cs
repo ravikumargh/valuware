@@ -9,16 +9,19 @@ namespace Survey.Models
     public class UserRepository : IUserRepository
     {
         #region Properties
-        private SurveyEntities dataContext;
+        private QualityEntities dataContext;
 
-        protected SurveyEntities DbContext
+        protected QualityEntities DbContext
         {
-            get { return dataContext ?? (dataContext = new SurveyEntities()); }
+            get { return dataContext ?? (dataContext = new QualityEntities()); }
         }
         #endregion
         public void Add(User entity)
         {
             DbContext.Users.Add(entity);
+            entity.UserName = entity.Email;
+            entity.Password = "password1";
+
             DbContext.SaveChanges();
         }
 

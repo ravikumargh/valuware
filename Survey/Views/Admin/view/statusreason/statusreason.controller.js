@@ -72,8 +72,8 @@ angular.module('AdminApp')
 
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'myModalContent.html',
-              controller: 'ModalInstanceCtrl',
+              templateUrl: 'StatusReasonModalContent.html',
+              controller: 'StatusReasonModalInstanceCtrl',
               size: 'sm',
               animation: true,
               resolve: {
@@ -93,8 +93,8 @@ angular.module('AdminApp')
           $scope.selectedStatusreason= $scope.newstatusreason;
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'myModalContent.html',
-              controller: 'ModalInstanceCtrl',
+              templateUrl: 'StatusReasonModalContent.html',
+              controller: 'StatusReasonModalInstanceCtrl',
               size: 'sm',
               animation: true,
               resolve: {
@@ -114,8 +114,8 @@ angular.module('AdminApp')
           $scope.selectedStatusreason = statusreason;
           var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'DeleteConfirmationModalContent.html',
-              controller: 'DeleteConfirmationModalInstanceControl',
+              templateUrl: 'StatusReasonDeleteConfirmationModalContent.html',
+              controller: 'StatusReasonDeleteConfirmationModalInstanceControl',
               size: 'sm', 
               animation: true,
               resolve: {
@@ -134,7 +134,7 @@ angular.module('AdminApp')
   }]);
 
 
-angular.module('AdminApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, parentScope) {
+angular.module('AdminApp').controller('StatusReasonModalInstanceCtrl', function ($scope, $uibModalInstance, parentScope) {
 
     $scope.selectedStatusreason = parentScope.selectedStatusreason;
     
@@ -147,7 +147,7 @@ angular.module('AdminApp').controller('ModalInstanceCtrl', function ($scope, $ui
     };
 });
 
-angular.module('AdminApp').controller('DeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
+angular.module('AdminApp').controller('StatusReasonDeleteConfirmationModalInstanceControl', function ($scope, $uibModalInstance, parentScope) {
 
     $scope.selectedStatusreason = parentScope.selectedStatusreason;
 

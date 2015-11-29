@@ -1,0 +1,97 @@
+<div ng-init="init()">
+    <!--<div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="SEARCH REQUEST" aria-label="...">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="filter_area">
+        <div class="">
+            <i class="fa fa-search"></i>
+            <input type="text" name="firstname" class="search" placeholder=" Search here" />
+        </div>
+        <div class=""> <span class="filter"> filter </span></div>
+    </div>
+
+    <div>
+        <table st-table="servicetickets" st-safe-src="rowCollection" class="table table-striped">
+            <tbody>
+                <tr ng-repeat="serviceticket in servicetickets">
+                    <td>
+                        <div class="content_div">
+                            <div class="col-md-3"> {{serviceticket.DateCreated}} </div>
+                            <div class="col-md-6">
+                                <div class="content_text">{{getClientDetails(this).Name}}-{{getSurveyType(this).Name}} </div>
+                                <div class="Townhouse"> Town house </div>
+                                <div class="LastUpdated"> Last Updated:  {{serviceticket.DateUpdated}}  </div>
+                            </div>
+                            <div class="col-md-3 rightPadding">
+                                <span class="view_btn right"> <a href="#/viewserviceticket/{{serviceticket.Id}}"> View</a></span>
+                                <div class="clear_line"> </div>
+                                <span class="lostlink"> RE 1506 527032 </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">New serviceticket</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                <input type="text" data-ng-model="selectedServiceTicket.Name" id="name" class="form-control" placeholder="Enter a serviceticket name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="name">Code</label>
+            <div class="controls">
+                <input type="text" data-ng-model="selectedServiceTicket.Code" id="name" class="form-control" placeholder="Enter a serviceticket code" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div class="modal-body">
+        Name : <input id="Text1" type="text" ng-model="newserviceticket.Name" />
+        <br />
+         Code : <input id="Text1" type="text" ng-model="newserviceticket.Code" />
+    </div>-->
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+<script type="text/ng-template" id="DeleteConfirmationModalContent.html">
+
+    <div class="modal-body">
+        <h5>Are you sure you want to delte this item?</h5>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Delete</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

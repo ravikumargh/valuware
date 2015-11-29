@@ -26,11 +26,15 @@ namespace Survey
             container.RegisterType<IRepository<Role>, RoleRepository>();
             container.RegisterType<IRepository<User>, UserRepository>();
             container.RegisterType<IRepository<Team>, TeamRepository>();
+            container.RegisterType<IRepository<Client_Master>, ClientRepository>();
             container.RegisterType<IRepository<Department>, DepartmentRepository>();
             container.RegisterType<IRepository<ClientType>, ClientTypeRepository>();
             container.RegisterType<IRepository<Priority>, PriorityRepository>();
             container.RegisterType<IRepository<Status>, StatusRepository>();
             container.RegisterType<IRepository<StatusReason>, StatusReasonRepository>();
+            container.RegisterType<IRepository<Service_Tickets>, ServiceTicketRepository>();
+            container.RegisterType<IRepository<ClientType>, ClientTypeRepository>();
+            container.RegisterType<IRepository<Survey_Types>, SurveyTypeRepository>();
             //container.RegisterType<IRepository<Survey.Data.Entities.Department>, DepartmentRepository>();
             //container.RegisterType<IRepository<Survey.Data.Entities.Role>, RoleRepository>();
             //container.RegisterType<IRepository<User>, UserRepository>();

@@ -24,26 +24,29 @@ namespace Survey.Controllers
         }
 
         // GET: api/Team/5
-        public string Get(int id)
+        public Team Get(int id)
         {
-            return "value";
+            return teamRepository.GetById(id);
         }
 
         // POST: api/Team
         public void Post(Team team)
         {
-            //teamRepository.Add(team);
+            teamRepository.Add(team);
 
         }
 
         // PUT: api/Team/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(Team team)
         {
+            teamRepository.Update(team);
         }
 
         // DELETE: api/Team/5
         public void Delete(int id)
         {
+            teamRepository.Delete(id);
+
         }
     }
 }

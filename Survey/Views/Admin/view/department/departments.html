@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="row in departments">
-                    <td>{{row.Name}}</td>
+                    <td>{{row.Department_Name}}</td>
                     <td>
                         <button type="button" ng-click="editDepartmentModel(row)" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-pencil">
@@ -38,7 +38,7 @@
 
     </div>
 </div>
-<script type="text/ng-template" id="myModalContent.html">
+<script type="text/ng-template" id="DepartmentModalContent.html">
     <div class="modal-header">
         <h3 class="modal-title">New Department</h3>
     </div>
@@ -46,10 +46,10 @@
         <div class="form-group">
             <label class="control-label" for="name">Name</label>
             <div class="controls">
-                <input type="text" data-ng-model="selectedDepartment.Name" id="name" class="form-control" placeholder="Enter a department name" required>
+                <input type="text" data-ng-model="selectedDepartment.Department_Name" id="name" class="form-control" placeholder="Enter a department name" required>
             </div>
         </div>
-       
+
         <div class="form-group">
             <div data-ng-show="error" class="text-danger">
                 <strong data-ng-bind="error"></strong>
@@ -68,7 +68,7 @@
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </script>
-<script type="text/ng-template" id="DeleteConfirmationModalContent.html">
+<script type="text/ng-template" id="DepartmentDeleteConfirmationModalContent.html">
 
     <div class="modal-body">
         <h5>Are you sure you want to delte this item?</h5>

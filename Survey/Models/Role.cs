@@ -14,19 +14,13 @@ namespace Survey.Models
     
     public partial class Role
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
-        public long Id { get; set; }
-        public string Name { get; set; }
+        public int Role_ID { get; set; }
+        public string Role_Name { get; set; }
+        public string Role_Description { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<System.DateTime> DateCreated { get; set; }
-        public Nullable<System.DateTime> DateUpdated { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public Nullable<System.DateTime> Created_On { get; set; }
+        public Nullable<int> Created_By { get; set; }
+        public Nullable<System.DateTime> Updated_On { get; set; }
+        public Nullable<int> Updated_By { get; set; }
     }
 }

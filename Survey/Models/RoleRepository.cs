@@ -17,8 +17,8 @@ namespace Survey.Models
 
         public void Update(Role entity)
         {
-            Role role = GetById(entity.Id);
-            role.Name = entity.Name;
+            Role role = GetById(entity.Role_ID);
+            role.Role_Name = entity.Role_Name;
             DbContext.SaveChanges();
         }
 
@@ -38,7 +38,7 @@ namespace Survey.Models
 
         public Role GetById(long id)
         {
-            return DbContext.Roles.Where(w => w.Id == id).FirstOrDefault();
+            return DbContext.Roles.Where(w => w.Role_ID == id).FirstOrDefault();
 
         }
 

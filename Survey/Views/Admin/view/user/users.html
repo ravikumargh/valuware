@@ -27,17 +27,17 @@
                     <td>{{user.Name}}</td>
                     <td>{{user.Email}}</td>
                     <td>{{getTeamDetails(this).Name}}</td>
-                    <td>{{getRoleDetails(this).Name}}</td>
+                    <td>{{getRoleDetails(this).Role_Name}}</td>
                     <td>{{user.PhoneNumber}}</td>
                     <td>{{user.Address}}</td>
                     <td>
-                        <button type="button" ng-click="editUserModel(user)" class="btn btn-sm btn-danger">
+                        <button ng-hide="user.RoleId==1" type="button" ng-click="editUserModel(user)" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-pencil">
                             </i>
                         </button>
                     </td>
                     <td>
-                        <button type="button" ng-click="deleteUserModel(user)" class="btn btn-sm btn-danger">
+                        <button ng-hide="user.RoleId==1" type="button" ng-click="deleteUserModel(user)" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-remove-circle">
                             </i>
                         </button>
@@ -82,7 +82,7 @@
             <div class="controls">
                 <select ng-model="selectedUser.RoleId" class="form-control">
                     <option value="" ng-selected="selected">Select Role</option>
-                    <option value="{{role.Id}}" ng-repeat="role in roles">{{role.Name}}</option>
+                    <option value="{{role.Role_ID}}" ng-repeat="role in roles">{{role.Role_Name}}</option>
                 </select>
             </div>
         </div>
@@ -113,7 +113,7 @@
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </script>
-<script type="text/ng-template" id="DeleteConfirmationModalContent.html">
+<script type="text/ng-template" id="UserDeleteConfirmationModalContent.html">
      
     <div class="modal-body">
         <h5>Are you sure you want to delte this item?</h5>

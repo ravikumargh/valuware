@@ -19,11 +19,11 @@ namespace Survey.Models
     public abstract class RepositoryBase 
     {
         #region Properties
-        private SurveyEntities dataContext;
+        private QualityEntities dataContext;
 
-        protected SurveyEntities DbContext
+        protected QualityEntities DbContext
         {
-            get { return dataContext ?? (dataContext = new SurveyEntities()); }
+            get { return dataContext ?? (dataContext = new QualityEntities()); }
         }
         #endregion
     }
@@ -31,7 +31,7 @@ namespace Survey.Models
     public abstract class RepositoryBase<T> where T : class
     {
         #region Properties
-        private SurveyEntities dataContext;
+        private QualityEntities dataContext;
         private readonly IDbSet<T> dbSet;
 
         protected IDbFactory DbFactory
@@ -40,7 +40,7 @@ namespace Survey.Models
             private set;
         }
 
-        protected SurveyEntities DbContext
+        protected QualityEntities DbContext
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
@@ -102,7 +102,7 @@ namespace Survey.Models
         */
     public interface IDbFactory : IDisposable
     {
-        SurveyEntities Init();
+        QualityEntities Init();
     }
     public interface IRepository<T> where T : class
     {

@@ -6,44 +6,46 @@ using System.Web;
 
 namespace Survey.Models
 {
-    public class TeamRepository : ITeamRepository
+    public class TeamRepository : RepositoryBase, ITeamRepository
     {
-        #region Properties
-        private SurveyEntities dataContext;
 
-        protected SurveyEntities DbContext
-        {
-            get { return dataContext ?? (dataContext = new SurveyEntities()); }
-        }
-        #endregion
         public void Add(Team entity)
         {
-            throw new NotImplementedException();
+            DbContext.Teams.Add(entity);
+            DbContext.SaveChanges();
         }
 
         public void Update(Team entity)
         {
-            throw new NotImplementedException();
+            Team team = GetById(entity.Id);
+            team.Name = entity.Name;
+            DbContext.SaveChanges();
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Team team = GetById(id);
+            DbContext.Teams.Remove(team);
+            DbContext.SaveChanges();
         }
 
         public void Delete(Expression<Func<Team, bool>> where)
         {
-            throw new NotImplementedException();
+            Team team = Get(where);
+            DbContext.Teams.Remove(team);
+            DbContext.SaveChanges();
         }
 
         public Team GetById(long id)
         {
-            throw new NotImplementedException();
+            return DbContext.Teams.Where(w => w.Id == id).FirstOrDefault();
+
         }
 
         public Team Get(Expression<Func<Team, bool>> where)
         {
-            throw new NotImplementedException();
+            return DbContext.Teams.Where(where).FirstOrDefault<Team>();
+
         }
 
         public IEnumerable<Team> GetAll()
@@ -53,7 +55,8 @@ namespace Survey.Models
 
         public IEnumerable<Team> GetMany(Expression<Func<Team, bool>> where)
         {
-            throw new NotImplementedException();
+            return DbContext.Teams.Where(where).ToList();
+
         }
     }
 
@@ -61,4 +64,5 @@ namespace Survey.Models
     {
 
     }
+
 }
