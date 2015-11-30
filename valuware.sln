@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "valuware", "valuware\valuware.csproj", "{EF8D0D5D-EA8E-4D7D-82D4-67F5270F800F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{72026E31-3830-4342-A180-CC7958BC0ABB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey", "Survey\Survey.csproj", "{990C5C88-5FB0-4F12-BEBE-1CB9A7CB6C59}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{EF8D0D5D-EA8E-4D7D-82D4-67F5270F800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8D0D5D-EA8E-4D7D-82D4-67F5270F800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF8D0D5D-EA8E-4D7D-82D4-67F5270F800F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72026E31-3830-4342-A180-CC7958BC0ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72026E31-3830-4342-A180-CC7958BC0ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72026E31-3830-4342-A180-CC7958BC0ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72026E31-3830-4342-A180-CC7958BC0ABB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{990C5C88-5FB0-4F12-BEBE-1CB9A7CB6C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{990C5C88-5FB0-4F12-BEBE-1CB9A7CB6C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990C5C88-5FB0-4F12-BEBE-1CB9A7CB6C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
